@@ -623,10 +623,11 @@ button { font-family: var(--font-body); color: inherit; }
       list.map(m => { const n = clipOfTime(vw.v, m.t); return "- " + mmss(m.t) + (n ? " (clip " + n + ")" : "") + " → https://www.youtube.com/watch?v=" + vw.v.youtubeId + "&t=" + Math.floor(m.t) + "s"; }).join("\n") +
       "\n¿Me los explicas y me haces las tarjetas de Anki de lo que valga la pena?";
     const area = $("copyArea");
-    const shown = () => { area.hidden = false; area.value = text; area.focus(); area.select(); $("copyMsg").textContent = "Cópialo de aquí abajo y pégalo en el chat con Claude."; };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(() => { $("copyMsg").textContent = "Copiado. Pégalo en el chat con Claude."; area.hidden = true; }, shown);
-    } else shown();
+    area.hidden = false; area.value = text;
+    $("copyMsg").textContent = "Si no se copió solo, cópialo de aquí abajo.";
+    try {
+      navigator.clipboard.writeText(text).then(() => { $("copyMsg").textContent = "Copiado. Pégalo en el chat con Claude."; }, () => { area.focus(); area.select(); });
+    } catch (_) { area.focus(); area.select(); }
   }
 
   // ---------- controls ----------
