@@ -126,6 +126,14 @@ button { font-family: var(--font-body); color: inherit; }
 .work { margin: 0 18px 18px; padding: 12px 16px; border-left: 4px solid var(--amber); background: var(--amber-soft); border-radius: 8px; }
 .work strong { display: block; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--amber); }
 .foot { font-size: 14px; color: var(--muted); display: grid; gap: 6px; }
+.toast { font-size: 14px; font-weight: 600; color: var(--accent); }
+.copyrow { border-bottom: 0; padding-top: 4px; }
+#copyArea { margin: 0 18px 18px; width: calc(100% - 36px); font: 14px/1.5 var(--font-mono); background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.mark { display: grid; grid-template-columns: 1fr auto auto; gap: 8px 12px; align-items: center; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+.mark .when { font-family: var(--font-mono); font-size: 14px; }
+.mark button { font-size: 13px; border: 0; background: var(--accent-soft); color: var(--accent); padding: 6px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; font-weight: 600; }
+.mark button.ok { background: var(--surface); color: var(--muted); border: 1px solid var(--line); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 440px) {
   .ledger { grid-template-columns: repeat(15, 1fr); }
   .primary { width: 100%; }
@@ -175,6 +183,8 @@ button { font-family: var(--font-body); color: inherit; }
     <div class="cta">
       <button class="primary" id="mainBtn" type="button" disabled>Cargando…</button>
       <button class="ghost" id="stopBtn" type="button" hidden>■ Terminar</button>
+      <button class="ghost" id="markBtn" type="button" title="Guarda este momento del video para repasarlo después">❓ No entendí esto</button>
+      <span class="toast" id="toast" aria-live="polite"></span>
     </div>
     <ol class="steps" id="steps"></ol>
   </section>
@@ -189,6 +199,18 @@ button { font-family: var(--font-body); color: inherit; }
     <h3 class="section-title">Frases del clip</h3>
     <ul class="phrases" id="phrases"></ul>
     <div class="work" id="work"></div>
+  </section>
+
+  <section class="card" id="marksCard" hidden>
+    <h3 class="section-title">Momentos que no entendí</h3>
+    <div class="sub">Vuelve a oírlos. Si sigues sin entender, copia la lista y pégasela a Claude: te los explica y te hace las tarjetas.</div>
+    <ul class="phrases" id="marks"></ul>
+    <div class="cta copyrow">
+      <button class="ghost" id="copyBtn" type="button">📋 Copiar la lista para Claude</button>
+      <span class="toast" id="copyMsg" aria-live="polite"></span>
+    </div>
+    <label class="sr" for="copyArea">Lista para copiar</label>
+    <textarea id="copyArea" hidden readonly rows="5"></textarea>
   </section>
 
   <section class="foot">
@@ -219,8 +241,8 @@ button { font-family: var(--font-body); color: inherit; }
   let practice = null;       // {v, clip} when practicing a different clip from the strip
 
   function load() {
-    try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && typeof s === "object") return Object.assign({ startDate: null, cursor: null, log: {} }, s); } catch (_) {}
-    return { startDate: null, cursor: null, log: {} };
+    try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && typeof s === "object") return Object.assign({ startDate: null, cursor: null, log: {}, marks: [] }, s); } catch (_) {}
+    return { startDate: null, cursor: null, log: {}, marks: [] };
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) {} }
   function today(d = new Date()) { const p = n => String(n).padStart(2, "0"); return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); }
@@ -332,6 +354,7 @@ button { font-family: var(--font-body); color: inherit; }
     renderButton();
     renderStrip(tv);
     renderPhrases(vw);
+    renderMarks();
   }
 
   function renderButton() {
@@ -558,6 +581,54 @@ button { font-family: var(--font-body); color: inherit; }
     if (ready) { player.seekTo(range().from, true); pauseVideo(); }
   }
 
+  // ---------- "No entendí" marks ----------
+  function clipOfTime(v, t) { const c = v.clips.find(c => t >= c.start - 0.5 && t < c.end + 0.5); return c ? c.n : null; }
+  let toastTimer = null;
+  function toast(msg) { $("toast").textContent = msg; clearTimeout(toastTimer); toastTimer = setTimeout(() => { $("toast").textContent = ""; }, 3500); }
+  function addMark() {
+    if (!ready) return;
+    const vw = viewOf(shownC()); if (!vw) return;
+    let t = 0; try { t = player.getCurrentTime(); } catch (_) {}
+    t = Math.max(vw.start, Math.round((t - 1.5) * 10) / 10);
+    state.marks = state.marks || [];
+    if (state.marks.some(m => m.v === vw.v.id && Math.abs(m.t - t) < 3)) { toast("Ya estaba guardado"); return; }
+    state.marks.push({ v: vw.v.id, t, date: today() });
+    save(); renderMarks(); toast("Guardado " + mmss(t) + ". Sigue escuchando.");
+  }
+  function renderMarks() {
+    const vw = viewOf(todayC()); const list = (state.marks || []).filter(m => vw && m.v === vw.v.id).sort((a, b) => a.t - b.t);
+    $("marksCard").hidden = !list.length;
+    if (!list.length) { $("marks").innerHTML = ""; return; }
+    $("marks").innerHTML = list.map(m => {
+      const n = clipOfTime(vw.v, m.t);
+      return '<li class="mark"><span class="when">' + (n ? "Clip " + n + " · " : "") + mmss(m.t) + '</span><button type="button" data-t="' + m.t + '">▶ Oír otra vez</button><button type="button" class="ok" data-del="' + m.t + '">✓ Ya lo entendí</button></li>';
+    }).join("");
+    $("marks").querySelectorAll("button[data-t]").forEach(b => b.onclick = () => playMark(+b.dataset.t));
+    $("marks").querySelectorAll("button[data-del]").forEach(b => b.onclick = () => {
+      const t = +b.dataset.del; state.marks = state.marks.filter(m => !(m.v === vw.v.id && m.t === t)); save(); renderMarks();
+    });
+  }
+  function playMark(t) {
+    if (!ready) return;
+    const vw = viewOf(todayC());
+    cancel(); routineActive = true; renderButton(); const myRun = run;
+    setCaptions(true);
+    coach("Momento que no entendiste · " + mmss(t), "Escucha con atención. Lee los subtítulos.", "Si sigues sin entender, copia la lista para Claude.", null);
+    play(Math.max(0, t - 2), Math.min(vw.v.durationSec, t + 5), () => { if (myRun !== run) return; routineActive = false; coachIdle(); renderButton(); }, false);
+  }
+  function copyMarks() {
+    const vw = viewOf(todayC()); if (!vw) return;
+    const list = (state.marks || []).filter(m => m.v === vw.v.id).sort((a, b) => a.t - b.t);
+    const text = "Claude, no entendí estos momentos del video «" + vw.v.title + "» (" + vw.v.speaker + "):\n" +
+      list.map(m => { const n = clipOfTime(vw.v, m.t); return "- " + mmss(m.t) + (n ? " (clip " + n + ")" : "") + " → https://www.youtube.com/watch?v=" + vw.v.youtubeId + "&t=" + Math.floor(m.t) + "s"; }).join("\n") +
+      "\n¿Me los explicas y me haces las tarjetas de Anki de lo que valga la pena?";
+    const area = $("copyArea");
+    const shown = () => { area.hidden = false; area.value = text; area.focus(); area.select(); $("copyMsg").textContent = "Cópialo de aquí abajo y pégalo en el chat con Claude."; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => { $("copyMsg").textContent = "Copiado. Pégalo en el chat con Claude."; area.hidden = true; }, shown);
+    } else shown();
+  }
+
   // ---------- controls ----------
   $("mainBtn").onclick = () => {
     if (routineActive) return toggleHold();
@@ -570,6 +641,8 @@ button { font-family: var(--font-body); color: inherit; }
     return finishDay();
   };
   $("stopBtn").onclick = () => { cancel(); coachIdle(); renderButton(); };
+  $("markBtn").onclick = addMark;
+  $("copyBtn").onclick = copyMarks;
   $("playBtn").onclick = togglePlay;
   $("shield").onclick = togglePlay;
   $("loopBtn").onclick = () => { loopOn = !loopOn; $("loopBtn").setAttribute("aria-pressed", String(loopOn)); if (seg && !routineActive) seg.loop = loopOn; };
