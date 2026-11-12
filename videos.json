@@ -1,0 +1,355 @@
+{
+ "videos": [
+  {
+   "id": "v01",
+   "order": 1,
+   "youtubeId": "F89eycANUrQ",
+   "title": "How I learned to read — and trade stocks — in prison",
+   "speaker": "Curtis \"Wall Street\" Carroll · TED",
+   "durationSec": 663,
+   "deck": "Inglés para crecer::Videos::01 Wall Street (TED)",
+   "clips": [
+    {
+     "n": 1,
+     "start": 0,
+     "end": 118,
+     "title": "Su niñez y «money rules the world»",
+     "lastLine": "So I always thought crime was my way to go.",
+     "phrases": [
+      {
+       "t": 46.6,
+       "word": "get caught",
+       "en": "How'd you <b>get caught</b>?",
+       "mean": "que te agarren / que te pillen",
+       "es": "¿Cómo <b>te agarraron</b>?",
+       "note": "How'd = How did. Pregunta del tío cuando lo atraparon.",
+       "end": 50.2
+      },
+      {
+       "t": 62.5,
+       "word": "gas money",
+       "en": "We needed <b>gas money</b> to get home.",
+       "mean": "plata para la gasolina",
+       "es": "Necesitábamos <b>plata para la gasolina</b> para llegar a la casa.",
+       "note": "",
+       "end": 64.9
+      },
+      {
+       "t": 86.8,
+       "word": "rule (the world)",
+       "en": "<b>Money rules the world</b> and everything in it.",
+       "mean": "mandar / gobernar",
+       "es": "<b>El dinero manda en el mundo</b> y en todo lo que hay en él.",
+       "note": "",
+       "end": 90.6
+      },
+      {
+       "t": 92.8,
+       "word": "follow the money",
+       "en": "If you <b>follow the money</b>, it'll lead you to the bad guy or the good guy.",
+       "mean": "seguir el rastro del dinero",
+       "es": "Si <b>sigues el dinero</b>, te lleva al malo o al bueno.",
+       "note": "it'll = it will.",
+       "end": 97.6
+      },
+      {
+       "t": 109.6,
+       "word": "be supposed to",
+       "en": "I mean, <b>how was I supposed to</b> do that?",
+       "mean": "se supone que / debería",
+       "es": "O sea, ¿<b>cómo se suponía que</b> yo hiciera eso?",
+       "note": "supposed to suena «su-PÓUS-tu»: la d casi no se oye.",
+       "end": 113.6
+      }
+     ],
+     "workWord": "be supposed to"
+    },
+    {
+     "n": 2,
+     "start": 118,
+     "end": 228,
+     "title": "La cárcel y el primer contacto con la bolsa",
+     "lastLine": "I was lost, tired, and I was out of options.",
+     "phrases": [
+      {
+       "t": 128.6,
+       "word": "financial nation",
+       "en": "I was growing up in the <b>strongest financial nation</b> in the world.",
+       "mean": "la potencia financiera",
+       "es": "Yo estaba creciendo en <b>la nación financieramente más fuerte</b> del mundo.",
+       "note": "",
+       "end": 133.2
+      },
+      {
+       "t": 163.1,
+       "word": "financial literacy",
+       "en": "<b>Financial literacy</b> really did rule the world.",
+       "mean": "educación financiera (saber manejar el dinero)",
+       "es": "<b>La educación financiera</b> de verdad mandaba en el mundo.",
+       "note": "did rule = énfasis: «de verdad mandaba».",
+       "end": 165.8
+      },
+      {
+       "t": 188.5,
+       "word": "pick stocks",
+       "en": "Hey youngster, you <b>pick stocks</b>?",
+       "mean": "escoger acciones para invertir",
+       "es": "Oye, muchacho, ¿tú <b>escoges acciones</b>?",
+       "note": "Hablado informal: sin «Do» al inicio (Do you pick stocks?).",
+       "end": 192.4
+      },
+      {
+       "t": 197.5,
+       "word": "a glimpse of hope",
+       "en": "It was the first time that I saw <b>a glimpse of hope</b>.",
+       "mean": "un destello / un vistazo de esperanza",
+       "es": "Fue la primera vez que vi <b>un destello de esperanza</b>.",
+       "note": "glimpse = vistazo rápido.",
+       "end": 202.0
+      },
+      {
+       "t": 223.8,
+       "word": "out of options",
+       "en": "I was lost, tired, and I was <b>out of options</b>.",
+       "mean": "sin opciones",
+       "es": "Estaba perdido, cansado y <b>sin opciones</b>.",
+       "note": "Igual que run out of: quedarse sin algo.",
+       "end": 228.0
+      }
+     ],
+     "workWord": "out of options"
+    },
+    {
+     "n": 3,
+     "start": 228,
+     "end": 314,
+     "title": "Aprender a leer y abrir la sección de negocios",
+     "lastLine": "So I looked for that glimpse.",
+     "phrases": [
+      {
+       "t": 230.3,
+       "word": "the hardest thing",
+       "en": "I did <b>the hardest thing I'd ever done</b> in my life.",
+       "mean": "lo más difícil que había hecho",
+       "es": "Hice <b>lo más difícil que había hecho</b> en mi vida.",
+       "note": "I'd = I had.",
+       "end": 233.4
+      },
+      {
+       "t": 247.8,
+       "word": "rough / a struggle",
+       "en": "It was <b>rough</b>, man. It was <b>a struggle</b>.",
+       "mean": "duro / una lucha",
+       "es": "Fue <b>duro</b>, hermano. Fue <b>una lucha</b>.",
+       "note": "",
+       "end": 251.3
+      },
+      {
+       "t": 250.7,
+       "word": "little did I know",
+       "en": "But <b>little did I know</b> I was receiving the greatest gifts I had ever dreamed of.",
+       "mean": "no tenía ni idea de que…",
+       "es": "Pero <b>no tenía ni idea de que</b> estaba recibiendo los mejores regalos que había soñado.",
+       "note": "Estructura para contar historias: Little did I know… = No sabía que…",
+       "end": 256.4
+      },
+      {
+       "t": 260.5,
+       "word": "get my hands on",
+       "en": "I read everything I could <b>get my hands on</b>.",
+       "mean": "conseguir / lo que me cayera en las manos",
+       "es": "Leía todo lo que <b>me cayera en las manos</b>.",
+       "note": "",
+       "end": 264.8
+      },
+      {
+       "t": 303.3,
+       "word": "business section",
+       "en": "So I <b>picked up</b> the <b>business section</b> of the newspaper.",
+       "mean": "la sección de negocios",
+       "es": "Así que <b>agarré</b> la <b>sección de negocios</b> del periódico.",
+       "note": "pick up = agarrar (también aprender algo: pick up English).",
+       "end": 307.6
+      }
+     ],
+     "workWord": "rough / a struggle"
+    },
+    {
+     "n": 4,
+     "start": 314,
+     "end": 402,
+     "title": "Hacerse responsable y los números del dinero en EE. UU.",
+     "lastLine": "So ... I thought.",
+     "phrases": [
+      {
+       "t": 320.5,
+       "word": "take responsibility",
+       "en": "I had to <b>take responsibility</b> for my own actions.",
+       "mean": "hacerse responsable",
+       "es": "Tuve que <b>hacerme responsable</b> de mis propios actos.",
+       "note": "",
+       "end": 324.4
+      },
+      {
+       "t": 328.9,
+       "word": "own up to",
+       "en": "I had to <b>own up to</b> that.",
+       "mean": "admitir / asumir (un error)",
+       "es": "Tuve que <b>asumir</b> eso.",
+       "note": "",
+       "end": 331.3
+      },
+      {
+       "t": 352.2,
+       "word": "in savings",
+       "en": "Over 60 percent of the American population has under 1,000 dollars <b>in savings</b>.",
+       "mean": "en ahorros / ahorrado",
+       "es": "Más del 60 % de la población estadounidense tiene menos de 1.000 dólares <b>ahorrados</b>.",
+       "note": "Practica los números en voz alta: sixty percent, a thousand dollars.",
+       "end": 359.5
+      },
+      {
+       "t": 359.7,
+       "word": "go broke",
+       "en": "Over 60 percent of NBA players and NFL players <b>go broke</b>.",
+       "mean": "quedar en la ruina",
+       "es": "Más del 60 % de los jugadores de la NBA y la NFL <b>quedan en la ruina</b>.",
+       "note": "broke = sin plata. I'm broke = estoy pelado.",
+       "end": 365.1
+      },
+      {
+       "t": 377.3,
+       "word": "living check to check",
+       "en": "…but were <b>living check to check</b>?",
+       "mean": "vivir al día (de pago en pago)",
+       "es": "…¿pero estaban <b>viviendo al día</b>?",
+       "note": "Es lo mismo que paycheck to paycheck.",
+       "end": 380.1
+      }
+     ],
+     "workWord": "own up to"
+    },
+    {
+     "n": 5,
+     "start": 402,
+     "end": 515,
+     "title": "El analfabetismo financiero",
+     "lastLine": "Well, his education already chose for him, probably.",
+     "phrases": [
+      {
+       "t": 416.2,
+       "word": "financial illiteracy",
+       "en": "<b>Financial illiteracy</b> is a disease.",
+       "mean": "analfabetismo financiero",
+       "es": "<b>El analfabetismo financiero</b> es una enfermedad.",
+       "note": "illiterate = que no sabe leer; aquí: que no sabe manejar el dinero.",
+       "end": 419.1
+      },
+      {
+       "t": 442.4,
+       "word": "dependent on",
+       "en": "…are all <b>dependent on</b> money that most people can't manage.",
+       "mean": "depender de",
+       "es": "…todo <b>depende de</b> un dinero que la mayoría no sabe manejar.",
+       "note": "",
+       "end": 446.1
+      },
+      {
+       "t": 478.4,
+       "word": "an hour",
+       "en": "<b>Earn</b> 30 cents <b>an hour</b>.",
+       "mean": "ganar … por hora",
+       "es": "<b>Ganar</b> 30 centavos <b>la hora</b>.",
+       "note": "Así se habla del pago: I make 15 dollars an hour.",
+       "end": 481.0
+      },
+      {
+       "t": 490.6,
+       "word": "stay out of trouble",
+       "en": "Hey, good luck, <b>stay out of trouble</b>.",
+       "mean": "no meterse en problemas",
+       "es": "Oye, buena suerte, <b>no te metas en problemas</b>.",
+       "note": "",
+       "end": 494.3
+      },
+      {
+       "t": 494.3,
+       "word": "long-term financial plan",
+       "en": "With no meaningful preparation or <b>long-term financial plan</b>…",
+       "mean": "plan financiero a largo plazo",
+       "es": "Sin una preparación real ni un <b>plan financiero a largo plazo</b>…",
+       "note": "",
+       "end": 498.2
+      }
+     ],
+     "workWord": "stay out of trouble"
+    },
+    {
+     "n": 6,
+     "start": 515,
+     "end": 663,
+     "title": "Las 4 reglas del dinero y el cierre",
+     "lastLine": "Thank you very much. Thank you.",
+     "phrases": [
+      {
+       "t": 525.6,
+       "word": "separate … from …",
+       "en": "How do you <b>separate</b> your emotional decisions <b>from</b> your financial decisions?",
+       "mean": "separar … de …",
+       "es": "¿Cómo <b>separas</b> tus decisiones emocionales <b>de</b> tus decisiones financieras?",
+       "note": "",
+       "end": 531.4
+      },
+      {
+       "t": 537.1,
+       "word": "cost of living",
+       "en": "Control your <b>cost of living</b>.",
+       "mean": "costo de vida",
+       "es": "Controla tu <b>costo de vida</b>.",
+       "note": "",
+       "end": 539.3
+      },
+      {
+       "t": 539.8,
+       "word": "borrow money",
+       "en": "<b>Borrow money</b> effectively.",
+       "mean": "pedir plata prestada",
+       "es": "<b>Pide prestado</b> de forma inteligente.",
+       "note": "borrow = pedir prestado; lend = prestarle a otro.",
+       "end": 542.2
+      },
+      {
+       "t": 541.6,
+       "word": "make your money work for you",
+       "en": "…allowing your money to <b>work for you</b> instead of you working for it.",
+       "mean": "que tu dinero trabaje para ti",
+       "es": "…dejando que tu dinero <b>trabaje para ti</b> en vez de tú trabajar para él.",
+       "note": "",
+       "end": 547.8
+      },
+      {
+       "t": 589.1,
+       "word": "byproduct",
+       "en": "Financial stability is a <b>byproduct</b> of a proper lifestyle.",
+       "mean": "resultado / consecuencia",
+       "es": "La estabilidad financiera es <b>el resultado</b> de un estilo de vida correcto.",
+       "note": "",
+       "end": 594.2
+      },
+      {
+       "t": 643.0,
+       "word": "I don't buy it",
+       "en": "Oh yeah, well, that ain't me and <b>I don't buy it</b>.",
+       "mean": "no me lo creo",
+       "es": "Ah sí, bueno, ese no soy yo y <b>no me lo creo</b>.",
+       "note": "ain't = isn't / am not (muy informal).",
+       "end": 646.0
+      }
+     ],
+     "workWord": "I don't buy it"
+    }
+   ],
+   "credit": "Charla de Curtis “Wall Street” Carroll en TED (TED2016). Licencia CC BY-NC-ND 4.0 — ted.com"
+  }
+ ]
+}
